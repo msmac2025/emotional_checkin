@@ -1,6 +1,6 @@
 // --- Data for emotions ---
 const emotions = [
-    { name: "sad", img: "images/sad.png" },
+    { name: "sad", img: "images/sad.jpeg" },
     { name: "loved", img: "images/loved.png" },
     { name: "angry", img: "images/angry.png" },
     { name: "relaxed", img: "images/relaxed.png" },
