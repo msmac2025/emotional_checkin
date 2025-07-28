@@ -1,0 +1,139 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align items to the top */
+    min-height: 100vh;
+    background-color: #f0f2f5;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#app-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 900px;
+    text-align: center;
+    margin-top: 50px; /* Give some space from the top */
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 2em;
+}
+
+p {
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 1.1em;
+}
+
+#avatars-container {
+    display: flex;
+    flex-wrap: wrap; /* Allows avatars to wrap to the next line */
+    justify-content: center;
+    gap: 25px; /* Space between avatars */
+    margin-bottom: 40px;
+}
+
+.avatar {
+    width: 120px; /* Size of each avatar container */
+    padding: 10px;
+    border: 3px solid transparent; /* Default transparent border */
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatar:hover {
+    border-color: #a0d8ff; /* Light blue border on hover */
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+}
+
+.avatar.clicked {
+    border-color: #007bff; /* Blue border when clicked */
+    background-color: #e6f2ff; /* Light blue background when clicked */
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.4);
+    transform: translateY(-3px); /* Slightly raise when clicked */
+}
+
+.avatar img {
+    width: 80px; /* Size of the image inside the avatar */
+    height: 80px;
+    object-fit: contain; /* Ensures the image fits without distortion */
+    border-radius: 50%; /* Make images circular if desired, or remove for square */
+    margin-bottom: 10px;
+}
+
+.avatar-name {
+    font-weight: bold;
+    color: #333;
+    text-transform: capitalize; /* Capitalize the first letter of the emotion name */
+}
+
+#counts-container {
+    background-color: #eef7ff;
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid #cce0f0;
+    margin-top: 30px;
+    text-align: left;
+}
+
+#counts-container h2 {
+    color: #0056b3;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.count-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px dashed #dbe9f5;
+}
+
+.count-item:last-child {
+    border-bottom: none;
+}
+
+.count-item span {
+    font-size: 1.1em;
+    color: #444;
+}
+
+.count-item .count-value {
+    font-weight: bold;
+    color: #007bff;
+    font-size: 1.2em;
+    min-width: 30px; /* Ensure consistent alignment */
+    text-align: right;
+}
+
+#reset-button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s;
+    margin-top: 25px;
+}
+
+#reset-button:hover {
+    background-color: #c82333;
+}
