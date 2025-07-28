@@ -14,27 +14,28 @@ const emotions = [
 let clickCounts = {}; // Stores the count for each emotion
 const avatarsContainer = document.getElementById('avatars-container');
 const clickCountsDisplay = document.getElementById('click-counts');
-const resetButton = document.getElementById('reset-button');
+const resetButton = document.getElementById('reset-button'); // Ensure this is correctly grabbed
 
 // --- Functions ---
 
 // Initializes click counts to zero and loads them from localStorage if available
 function initializeCounts() {
     emotions.forEach(emotion => {
-        clickCounts[emotion.name] = 0;
+        clickCounts[emotion.name] = 0; // Default to 0
     });
     // Try to load saved counts from localStorage
     const savedCounts = localStorage.getItem('emotionClickCounts');
     if (savedCounts) {
         try {
             const parsedCounts = JSON.parse(savedCounts);
+            // Only update counts for emotions that exist in our current 'emotions' list
             for (const emotionName in parsedCounts) {
-                if (clickCounts.hasOwnProperty(emotionName)) {
+                if (clickCounts.hasOwnProperty(emotionName)) { // Check if emotion exists
                     clickCounts[emotionName] = parsedCounts[emotionName];
                 }
             }
         } catch (e) {
-            console.error("Error parsing saved counts:", e);
+            console.error("Error parsing saved counts from localStorage:", e);
         }
     }
 }
@@ -75,8 +76,6 @@ function handleAvatarClick(emotionName, avatarElement) {
     saveCounts(); // Save updated counts
     updateClickCountsDisplay(); // Update the display
     avatarElement.classList.add('clicked'); // Add visual feedback for being clicked
-    // Note: The 'clicked' class will remain. If you want it to flash or disappear,
-    // you'd need to add a setTimeout to remove the class after a short delay.
 }
 
 // Updates the display of click counts
@@ -95,21 +94,32 @@ function updateClickCountsDisplay() {
 
 // Resets all counts to zero
 function resetAllCounts() {
-    initializeCounts(); // Reset counts in memory
+    console.log("Reset button clicked! Resetting counts..."); // Console log for debugging
+    emotions.forEach(emotion => {
+        clickCounts[emotion.name] = 0; // Reset counts in memory to 0
+    });
     saveCounts(); // Save cleared counts to localStorage
-    updateClickCountsDisplay(); // Update the display
+    updateClickCountsDisplay(); // Update the display to show 0s
+
     // Remove 'clicked' class from all avatars
-    Array.from(avatarsContainer.children).forEach(avatar => {
+    // This part ensures the blue border is removed from all avatar elements on the page
+    Array.from(document.querySelectorAll('.avatar')).forEach(avatar => {
         avatar.classList.remove('clicked');
     });
 }
 
 // --- Event Listeners ---
-resetButton.addEventListener('click', resetAllCounts);
+// Make sure the resetButton variable is correctly linked before adding the listener
+if (resetButton) {
+    resetButton.addEventListener('click', resetAllCounts);
+} else {
+    console.error("Reset button element not found!");
+}
+
 
 // --- Initial setup when the page loads ---
 document.addEventListener('DOMContentLoaded', () => {
-    initializeCounts(); // Set up initial counts
+    initializeCounts(); // Set up initial counts (from localStorage or 0)
     renderAvatars();    // Display the avatars
     updateClickCountsDisplay(); // Show initial counts
 });
