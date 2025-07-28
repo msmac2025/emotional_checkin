@@ -2,12 +2,12 @@
 const emotions = [
     { name: "sad", img: "images/sad.jpeg" },
     { name: "loved", img: "images/loved.jpeg" },
-    { name: "angry", img: "images/angry.png" },
-    { name: "relaxed", img: "images/relaxed.png" },
-    { name: "sleepy", img: "images/sleepy.png" },
-    { name: "sick", img: "images/sick.png" },
-    { name: "happy", img: "images/happy.png" },
-    { name: "excited", img: "images/excited.png" }
+    { name: "angry", img: "images/angry.jpeg" },
+    { name: "relaxed", img: "images/relaxed.jpeg" },
+    { name: "sleepy", img: "images/sleepy.jpeg" },
+    { name: "sick", img: "images/sick.jpeg" },
+    { name: "happy", img: "images/happy.jpeg" },
+    { name: "excited", img: "images/excited.jpeg" }
 ];
 
 // --- Global variables ---
